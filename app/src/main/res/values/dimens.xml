@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="icon_dimen_large">56dp</dimen>
+    <dimen name="title_size">24sp</dimen>
+    <dimen name="icon_dimen_small">36dp</dimen>
+</resources>
