@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="icon_dimen_large">56dp</dimen>
-    <dimen name="title_size">24sp</dimen>
-    <dimen name="icon_dimen_small">36dp</dimen>
+    <dimen name="icon_dimen_medium">34dp</dimen>
+    <dimen name="icon_dimen_small">22dp</dimen>
+    <dimen name="title_size">20sp</dimen>
+
+    <dimen name="margin_parent">8dp</dimen>
+    <dimen name="margin_child">4dp</dimen>
+    <dimen name="card_radius">6dp</dimen>
+
 </resources>

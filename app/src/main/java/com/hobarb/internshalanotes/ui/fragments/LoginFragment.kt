@@ -1,10 +1,9 @@
-package com.hobarb.internshalanotes
+package com.hobarb.internshalanotes.ui.fragments
 
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.Toast
 import androidx.cardview.widget.CardView
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
@@ -15,7 +14,7 @@ import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
-import com.google.firebase.ktx.Firebase
+import com.hobarb.internshalanotes.R
 
 class LoginFragment: Fragment(R.layout.fragment_login) {
 
@@ -36,7 +35,7 @@ class LoginFragment: Fragment(R.layout.fragment_login) {
 
     override fun onStart() {
         super.onStart()
-        // Check if user is signed in (non-null) and update UI accordingly.
+        // Check if user is signed in (non-null)
         val currentUser = auth.currentUser
         updateUI(currentUser)
     }
@@ -44,6 +43,7 @@ class LoginFragment: Fragment(R.layout.fragment_login) {
 
     private fun configureGoogleSignIn() {
         // Configure Google Sign In
+        // Firebase function
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestIdToken(getString(R.string.default_web_client_id))
             .requestEmail()
@@ -66,7 +66,7 @@ class LoginFragment: Fragment(R.layout.fragment_login) {
                 Log.d(TAG, "firebaseAuthWithGoogle:" + account.id)
                 firebaseAuthWithGoogle(account.idToken!!)
             } catch (e: ApiException) {
-                // Google Sign In failed, update UI appropriately
+                // Google Sign In failed
                 Log.w(TAG, "Google sign in failed", e)
             }
         }
@@ -76,12 +76,12 @@ class LoginFragment: Fragment(R.layout.fragment_login) {
         auth.signInWithCredential(credential)
             .addOnCompleteListener(requireActivity()) { task ->
                 if (task.isSuccessful) {
-                    // Sign in success, update UI with the signed-in user's information
+                    // Sign in success, go to NotesFragment with the signed-in user
                     Log.d(TAG, "signInWithCredential:success")
                     val user = auth.currentUser
                     updateUI(user)
                 } else {
-                    // If sign in fails, display a message to the user.
+                    // sign in fails
                     Log.w(TAG, "signInWithCredential:failure", task.exception)
                     updateUI(null)
                 }

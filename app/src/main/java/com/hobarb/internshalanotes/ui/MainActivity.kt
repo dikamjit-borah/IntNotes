@@ -1,4 +1,4 @@
-package com.hobarb.internshalanotes
+package com.hobarb.internshalanotes.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

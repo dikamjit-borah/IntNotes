@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginLeft="@dimen/margin_parent"
+    android:layout_marginRight="@dimen/margin_parent"
+    android:layout_marginTop="@dimen/margin_child"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="@dimen/card_radius">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:background="@color/secondary_light"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="126dp" >
+        <LinearLayout
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:background="@color/primary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_margin="@dimen/margin_child"
+                android:src="@drawable/icon_pin"
+                android:layout_width="@dimen/icon_dimen_small"
+                android:layout_height="@dimen/icon_dimen_small">
+
+            </ImageView>
+            <TextView
+                android:id="@+id/tv_noteTitle_it_note"
+                android:layout_margin="@dimen/margin_child"
+                android:textColor="@color/white"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/title_size"
+                android:text="Note Title">
+
+            </TextView>
+
+
+        </LinearLayout>
+        <TextView
+            android:id="@+id/tv_noteDescription_it_note"
+            android:layout_margin="@dimen/margin_child"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Note Title">
+
+        </TextView>
+
+
+
+
+
+    </LinearLayout>
+
+
+
+
+</androidx.cardview.widget.CardView>

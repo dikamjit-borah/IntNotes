@@ -6,7 +6,7 @@
     app:startDestination="@id/loginFragment">
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.hobarb.internshalanotes.LoginFragment"
+        android:name="com.hobarb.internshalanotes.ui.fragments.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" >
         <action
@@ -19,7 +19,28 @@
     </fragment>
     <fragment
         android:id="@+id/notesFragment"
-        android:name="com.hobarb.internshalanotes.NotesFragment"
+        android:name="com.hobarb.internshalanotes.ui.fragments.NotesFragment"
         android:label="fragment_notes"
-        tools:layout="@layout/fragment_notes" />
+        tools:layout="@layout/fragment_notes" >
+        <action
+            android:id="@+id/action_notesFragment_to_addUpdateNoteFragment"
+            app:destination="@id/addUpdateNoteFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/addUpdateNoteFragment"
+        android:name="com.hobarb.internshalanotes.ui.fragments.AddUpdateNoteFragment"
+        android:label="fragment_add_update_note"
+        tools:layout="@layout/fragment_add_update_note" >
+        <action
+            android:id="@+id/action_addUpdateNoteFragment_to_notesFragment"
+            app:destination="@id/notesFragment"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_out_left"
+            app:popExitAnim="@anim/slide_in_right" />
+    </fragment>
 </navigation>
