@@ -3,6 +3,7 @@ package com.hobarb.internshalanotes.utils
 class Constants {
     companion object{
 
+
         const val database_name:String = "InternshalaNotes"
         const val table_name:String = "MyNotes"
         const val colNameNoteId:String = "note_id"
@@ -12,6 +13,9 @@ class Constants {
 
         const val alertDialogAddNote:Int = 1001
         const val alertDialogUpdateNote:Int = 1002
+
+        const val SHARED_PREFERENCES_KEY: String = "INTERNSHALA_NOTES"
+        const val USERNAME_KEY: String = ""
 
     }
 }

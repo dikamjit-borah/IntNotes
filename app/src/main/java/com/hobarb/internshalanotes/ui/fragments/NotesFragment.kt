@@ -15,10 +15,13 @@ import com.hobarb.internshalanotes.db_name.DbManager
 import com.hobarb.internshalanotes.models.NotesModel
 import com.hobarb.internshalanotes.utils.Constants
 import com.hobarb.internshalanotes.utils.HelperFunctions
+import com.hobarb.internshalanotes.utils.SharedPrefs
+import org.w3c.dom.Text
 
 class NotesFragment: Fragment(R.layout.fragment_notes) {
     private lateinit var addNoteFab: FloatingActionButton
     private lateinit var allNotesRv: RecyclerView
+    private lateinit var userNameTv:TextView
     private val col_note_id = Constants.colNameNoteId
     private val col_note_title = Constants.colNameNoteTitle
     private val col_note_description = Constants.colNameNoteDescription
@@ -28,14 +31,16 @@ class NotesFragment: Fragment(R.layout.fragment_notes) {
         super.onViewCreated(view, savedInstanceState)
         addNoteFab = view.findViewById(R.id.fab_addNote_fragNotes)
         addNoteFab.setOnClickListener {
-            val action = NotesFragmentDirections.actionNotesFragmentToAddUpdateNoteFragment()
+            val action = NotesFragmentDirections.actionNotesFragmentToAddUpdateNoteFragment(Constants.alertDialogAddNote, System.currentTimeMillis(), "", "")
             findNavController().navigate(action)
         }
         allNotesRv = view.findViewById(R.id.rv_allNotes_fragNotes)
+        userNameTv = view.findViewById(R.id.tv_userName_fragNotes)
     }
 
     override fun onResume() {
         super.onResume()
+        userNameTv.text = SharedPrefs(requireContext()).readPrefs(Constants.USERNAME_KEY).toString()
         LoadQuery("%")
         setupAndLoadRecyclerView()
     }

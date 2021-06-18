@@ -22,7 +22,7 @@
 
             </ImageView>
             <TextView
-                android:id="@+id/tv_noteTitle_it_note"
+                android:id="@+id/tv_noteTitle_itemNote"
                 android:layout_margin="@dimen/margin_child"
                 android:textColor="@color/white"
                 android:layout_weight="1"

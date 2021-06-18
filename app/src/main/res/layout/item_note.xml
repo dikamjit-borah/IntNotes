@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cv_parent_itemNote"
     android:layout_marginLeft="@dimen/margin_parent"
     android:layout_marginRight="@dimen/margin_parent"
     android:layout_marginTop="@dimen/margin_child"
@@ -29,7 +30,7 @@
 
             </ImageView>
             <TextView
-                android:id="@+id/tv_noteTitle_it_note"
+                android:id="@+id/tv_noteTitle_itemNote"
                 android:layout_margin="@dimen/margin_child"
                 android:textColor="@color/white"
                 android:layout_weight="1"
@@ -43,7 +44,7 @@
 
         </LinearLayout>
         <TextView
-            android:id="@+id/tv_noteDescription_it_note"
+            android:id="@+id/tv_noteDescription_itemNote"
             android:layout_margin="@dimen/margin_child"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

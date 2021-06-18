@@ -42,5 +42,17 @@
             app:exitAnim="@anim/slide_out_right"
             app:popEnterAnim="@anim/slide_out_left"
             app:popExitAnim="@anim/slide_in_right" />
+        <argument
+            android:name="alertCode"
+            app:argType="integer" />
+        <argument
+            android:name="thatNoteId"
+            app:argType="long" />
+        <argument
+            android:name="thatNoteTitle"
+            app:argType="string" />
+        <argument
+            android:name="thatNoteDescription"
+            app:argType="string" />
     </fragment>
 </navigation>

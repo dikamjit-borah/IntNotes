@@ -4,12 +4,19 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.Navigation
+import androidx.navigation.Navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.hobarb.internshalanotes.models.NotesModel
 import com.hobarb.internshalanotes.R
 import com.hobarb.internshalanotes.databinding.ItemNoteBinding
+import com.hobarb.internshalanotes.ui.fragments.AddUpdateNoteFragmentDirections
+import com.hobarb.internshalanotes.ui.fragments.NotesFragment
+import com.hobarb.internshalanotes.ui.fragments.NotesFragmentDirections
+import com.hobarb.internshalanotes.utils.Constants
 
 class NotesAdapter(val context: Context, allNotes: ArrayList<NotesModel>) :RecyclerView.Adapter<NotesAdapter.NoteViewHolder>() {
 
@@ -22,8 +29,6 @@ class NotesAdapter(val context: Context, allNotes: ArrayList<NotesModel>) :Recyc
     {
         val binding = ItemNoteBinding.bind(itemview)
     }
-
-
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NotesAdapter.NoteViewHolder {
         return NoteViewHolder(
@@ -38,8 +43,12 @@ class NotesAdapter(val context: Context, allNotes: ArrayList<NotesModel>) :Recyc
     override fun onBindViewHolder(holder: NotesAdapter.NoteViewHolder, position: Int) {
 
             with(holder) {
-                binding.tvNoteTitleItNote.text = allNotes[position].note_title
-                binding.tvNoteDescriptionItNote.text = allNotes[position].note_description
+                binding.tvNoteTitleItemNote.text = allNotes[position].note_title
+                binding.tvNoteDescriptionItemNote.text = allNotes[position].note_description
+                binding.cvParentItemNote.setOnClickListener {
+                    val action = NotesFragmentDirections.actionNotesFragmentToAddUpdateNoteFragment(Constants.alertDialogUpdateNote,allNotes[position].note_id, allNotes[position].note_title, allNotes[position].note_description)
+                    Navigation.findNavController(it).navigate(action)
+                }
 
         }
     }

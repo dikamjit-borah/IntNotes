@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.cardview.widget.CardView
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
@@ -15,6 +16,8 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
 import com.hobarb.internshalanotes.R
+import com.hobarb.internshalanotes.utils.Constants
+import com.hobarb.internshalanotes.utils.SharedPrefs
 
 class LoginFragment: Fragment(R.layout.fragment_login) {
 
@@ -91,8 +94,12 @@ class LoginFragment: Fragment(R.layout.fragment_login) {
     private fun updateUI(user: FirebaseUser?) {
         if(user!=null)
         {
+            SharedPrefs(requireContext()).writePrefs(Constants.USERNAME_KEY, user.displayName.toString())
             val action = LoginFragmentDirections.actionLoginFragmentToNotesFragment()
             findNavController().navigate(action)
+        }
+        else{
+            Toast.makeText(context, "Please login to continue", Toast.LENGTH_SHORT).show()
         }
 
     }

@@ -26,14 +26,14 @@
 
             </ImageView>
             <TextView
-                android:id="@+id/tv_noteTitle_it_note"
+                android:id="@+id/tv_addOrUpdate_fragAddUpdate"
                 android:layout_margin="@dimen/margin_child"
                 android:textColor="@color/white"
                 android:layout_weight="1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/title_size"
-                android:text="Note Id">
+                android:text="Add/Update">
 
             </TextView>
 
@@ -45,7 +45,9 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
             <com.google.android.material.textfield.TextInputLayout
+
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:id="@+id/til_noteTitle_fragAddUpdate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/margin_child">
@@ -59,6 +61,7 @@
             </com.google.android.material.textfield.TextInputLayout>
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:id="@+id/til_noteDescription_fragAddUpdate"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
@@ -74,11 +77,13 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.button.MaterialButton
+                android:background="@drawable/custom_button"
                 android:id="@+id/btn_saveBtn_fragAddUpdate"
                 android:textSize="@dimen/title_size"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/margin_parent"
+              android:layout_margin="@dimen/margin_child"
                 android:text="Save note" />
         </LinearLayout>
     </LinearLayout>

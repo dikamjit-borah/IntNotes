@@ -1,38 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".ui.fragments.NotesFragment">
 
-    <TextView
-        android:id="@+id/tv_noNotesAlert_fragNotes"
-        android:visibility="gone"
-        android:layout_gravity="center"
-        android:gravity="center"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/no_notes_alert">
+        android:orientation="vertical">
 
-    </TextView>
+        <LinearLayout
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_allNotes_fragNotes"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        ></androidx.recyclerview.widget.RecyclerView>
+            android:layout_margin="@dimen/margin_parent"
+            android:layout_marginBottom="@dimen/margin_child"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/welcome">
+
+            </TextView>
+
+            <TextView
+                android:textColor="@color/primary_light"
+                android:id="@+id/tv_userName_fragNotes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="User"
+                android:textSize="@dimen/title_size">
+
+            </TextView>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_noNotesAlert_fragNotes"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="@string/no_notes_alert"
+            android:visibility="gone">
+
+        </TextView>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_allNotes_fragNotes"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </androidx.recyclerview.widget.RecyclerView>
+    </LinearLayout>
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_addNote_fragNotes"
-        android:layout_margin="@dimen/margin_parent"
-        android:layout_gravity="right|bottom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="right|bottom"
+        android:layout_margin="@dimen/margin_parent"
         android:backgroundTint="@color/primary_light"
         android:src="@drawable/ic_baseline_note_add_24"
-        app:tint="@color/white"
-        >
+        app:tint="@color/white">
 
     </com.google.android.material.floatingactionbutton.FloatingActionButton>
 

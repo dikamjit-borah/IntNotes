@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.hobarb.internshalanotes.R
 import com.hobarb.internshalanotes.databinding.FragmentAddUpdateNoteBinding
 import com.hobarb.internshalanotes.db_name.DbManager
@@ -16,7 +17,7 @@ import com.hobarb.internshalanotes.utils.Constants
 class AddUpdateNoteFragment : Fragment(R.layout.fragment_add_update_note) {
     private var _binding: FragmentAddUpdateNoteBinding? = null
     private val binding get() = _binding!!
-    private var alertCode = 1001
+    private val args: AddUpdateNoteFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -35,26 +36,63 @@ class AddUpdateNoteFragment : Fragment(R.layout.fragment_add_update_note) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val binding = FragmentAddUpdateNoteBinding.bind(view)
-        //val alertCode = getfroom intent
-       binding.btnSaveBtnFragAddUpdate.setOnClickListener {
-           when (alertCode) {
-               Constants.alertDialogAddNote -> {
-                   createNote()
-                   Toast.makeText(context, "Note created", Toast.LENGTH_SHORT).show()
-               }
+        val alertCode = args.alertCode
+        val thatNoteId = args.thatNoteId
+        val thatNoteTitle = args.thatNoteTitle
+        val thatNoteDescription = args.thatNoteDescription
 
-               Constants.alertDialogUpdateNote -> {
-                   Toast.makeText(context, "Note updated", Toast.LENGTH_SHORT).show()
-               }
-           }
-           val action = AddUpdateNoteFragmentDirections.actionAddUpdateNoteFragmentToNotesFragment()
-           findNavController().navigate(action)
-       }
+        binding.tvAddOrUpdateFragAddUpdate.text = "$thatNoteId"
+        binding.tilNoteTitleFragAddUpdate.editText!!.setText(thatNoteTitle)
+        binding.tilNoteDescriptionFragAddUpdate.editText!!.setText(thatNoteDescription)
+        binding.btnSaveBtnFragAddUpdate.setOnClickListener {
+            validateAndSave(alertCode)
+        }
+    }
+
+    private fun validateAndSave(alertCode: Int) {
+        if (binding.etNoteTitleFragAddUpdate.text.isNullOrEmpty()) {
+            binding.etNoteTitleFragAddUpdate.error = "Please write a title for your note"
+            return;
+        }
+        if (binding.etNoteDescriptionFragAddUpdate.text.isNullOrEmpty()) {
+            binding.etNoteDescriptionFragAddUpdate.error =
+                "Please write a description for your note"
+            return
+        }
+        when (alertCode) {
+            Constants.alertDialogAddNote -> {
+                createNote()
+                Toast.makeText(context, "Note created", Toast.LENGTH_SHORT).show()
+            }
+
+            Constants.alertDialogUpdateNote -> {
+                updateNote()
+                Toast.makeText(context, "Note updated", Toast.LENGTH_SHORT).show()
+            }
+        }
+        val action = AddUpdateNoteFragmentDirections.actionAddUpdateNoteFragmentToNotesFragment()
+        findNavController().navigate(action)
+    }
+
+    private fun updateNote() {
+        val dbManager = DbManager(requireContext())
+        getContentValues()
+        val values = getContentValues()
+        val noteId = binding.tvAddOrUpdateFragAddUpdate.text.toString()
+        val selectionArgs = arrayOf(noteId)
+        var id = dbManager.updateNote(values, "${Constants.colNameNoteId}=?", selectionArgs)
+
     }
 
     private fun createNote() {
         val dbManager = DbManager(requireContext())
-        val noteId = System.currentTimeMillis()
+        getContentValues()
+        val values = getContentValues()
+        var id = dbManager.insertIntoDb(values)
+    }
+
+    private fun getContentValues(): ContentValues {
+        val noteId = binding.tvAddOrUpdateFragAddUpdate.text.toString().toLong()
         val noteTitle = binding.etNoteTitleFragAddUpdate.text.toString()
         val noteDescription = binding.etNoteDescriptionFragAddUpdate.text.toString()
 
@@ -63,7 +101,7 @@ class AddUpdateNoteFragment : Fragment(R.layout.fragment_add_update_note) {
         values.put(Constants.colNameNoteTitle, noteTitle)
         values.put(Constants.colNameNoteDescription, noteDescription)
 
-        var id = dbManager.insertIntoDb(values)
+        return values
     }
 }
 
