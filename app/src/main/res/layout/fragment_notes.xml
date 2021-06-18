@@ -12,31 +12,37 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <LinearLayout
-
-            android:layout_margin="@dimen/margin_parent"
-            android:layout_marginBottom="@dimen/margin_child"
+        <androidx.cardview.widget.CardView
+            android:elevation="@dimen/cardview_default_elevation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="wrap_content"
+            android:layout_marginBottom="@dimen/margin_child"
+            >
+            <LinearLayout
+                android:layout_margin="@dimen/margin_parent"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/welcome">
+                android:orientation="vertical">
 
-            </TextView>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/welcome">
 
-            <TextView
-                android:textColor="@color/primary_light"
-                android:id="@+id/tv_userName_fragNotes"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="User"
-                android:textSize="@dimen/title_size">
+                </TextView>
 
-            </TextView>
-        </LinearLayout>
+                <TextView
+                    android:textColor="@color/primary_light"
+                    android:id="@+id/tv_userName_fragNotes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="User"
+                    android:textSize="@dimen/title_size">
+
+                </TextView>
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
 
         <TextView
             android:id="@+id/tv_noNotesAlert_fragNotes"

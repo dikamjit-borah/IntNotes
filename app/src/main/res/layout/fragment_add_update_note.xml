@@ -77,14 +77,15 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.button.MaterialButton
+                android:textAllCaps="false"
                 android:background="@drawable/custom_button"
                 android:id="@+id/btn_saveBtn_fragAddUpdate"
                 android:textSize="@dimen/title_size"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/margin_parent"
-              android:layout_margin="@dimen/margin_child"
-                android:text="Save note" />
+                android:layout_margin="@dimen/margin_child"
+                android:text="@string/save_note" />
         </LinearLayout>
     </LinearLayout>
 
