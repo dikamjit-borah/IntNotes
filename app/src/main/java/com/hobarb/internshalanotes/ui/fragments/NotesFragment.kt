@@ -14,9 +14,7 @@ import com.hobarb.internshalanotes.adapters.NotesAdapter
 import com.hobarb.internshalanotes.db_name.DbManager
 import com.hobarb.internshalanotes.models.NotesModel
 import com.hobarb.internshalanotes.utils.Constants
-import com.hobarb.internshalanotes.utils.HelperFunctions
 import com.hobarb.internshalanotes.utils.SharedPrefs
-import org.w3c.dom.Text
 
 class NotesFragment: Fragment(R.layout.fragment_notes) {
     private lateinit var addNoteFab: FloatingActionButton

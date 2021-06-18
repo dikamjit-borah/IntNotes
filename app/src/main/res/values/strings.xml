@@ -5,4 +5,5 @@
     <string name="enter_note_description">Enter note description</string>
     <string name="no_notes_alert">You do not have any notes currently</string>
     <string name="welcome">Welcome</string>
+    <string name="delete_note">Delete Note</string>
 </resources>
